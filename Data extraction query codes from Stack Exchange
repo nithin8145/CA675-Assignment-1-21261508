@@ -1,1 +1,14 @@
-hjhk
+select top 50000 * from Posts where Posts.ViewCount > 112233 order by Posts.ViewCount desc
+50000 rows returned
+
+select top 50000 * from Posts where Posts.ViewCount > 80000 and Posts.ViewCount < 127754 order by Posts.ViewCount desc
+41947 rows returned
+
+select top 50000 * from Posts where Posts.ViewCount > 45300 and Posts.ViewCount < 80001 order by Posts.ViewCount desc
+50000 rows returned
+
+select top 50000 * from Posts where Posts.ViewCount > 27439 and Posts.ViewCount < 55926 order by Posts.ViewCount desc
+50000 rows returned
+
+select top 50000 * from Posts where Posts.ViewCount > 41420 and Posts.ViewCount < 42949 order by Posts.ViewCount desc
+8067 rows returned
