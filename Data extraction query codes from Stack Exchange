@@ -7,5 +7,5 @@ select top 50000 * from Posts where Posts.ViewCount > 70000 and Posts.ViewCount 
 select top 50000 * from Posts where Posts.ViewCount > 40000 and Posts.ViewCount < 74785 order by Posts.ViewCount desc
 50000 rows returned.
 
-select top 50000 * from Posts where Posts.ViewCount > 25000 and Posts.ViewCount < 53403 order by Posts.ViewCount desc
+select top 50000 * from Posts where Posts.ViewCount > 25000 and Posts.ViewCount < 53347 order by Posts.ViewCount desc
 50000 rows returned.
