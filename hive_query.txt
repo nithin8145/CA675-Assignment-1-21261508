@@ -1,0 +1,17 @@
+//Creating database 
+CREATE DATABASE nithins_assignment;
+
+//Creating table with the values
+CREATE EXTERNAL TABLE wikipedia (Id INT, Score INT, ViewCount INT, Body String, OwnerUserId INT, Title String, Tags String) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LOCATION '/nithin_vincent_hadoop';
+
+//loading the data into the table
+LOAD DATA INPATH '/nithin_vincent_hadoop/carl_sagan/' INTO TABLE wikipedia;
+
+//1- top 10 post by score
+SELECT score, id  FROM wikipedia ORDER BY Score DESC LIMIT 10;
+
+//2- top 10 users by post score 
+SELECT owneruserid, SUM(score) AS final_owner_score FROM wikipedia GROUP BY owneruserid ORDER BY final_owner_score DESC LIMIT 10;
+
+//3-  number of distinct users, who used the word “cloud” in one of their posts
+SELECT COUNT(DISTINCT owneruserid) AS Owner_various_posts FROM wikipedia WHERE (lower(Body) like '%cloud%' OR lower(Title) like '%cloud%');
