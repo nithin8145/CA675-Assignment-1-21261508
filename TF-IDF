@@ -1,0 +1,36 @@
+//Using query for final_owner_score performing TF-IDF using Hive Program
+//Using jar file for installing hivemall
+
+hive;
+add jar /home/nithin_thayyil2/hivemall-core-0.4.2-rc.2-with-dependencies.jar;
+source /home/nithin_thayyil2/define-all_(1).hive;
+
+//Then following steps were taken to perform TF-IDF 
+
+create table nithin_vincent_tfidf as 
+SELECT OwnerUserId, SUM(Score) AS final_owner_score 
+FROM wikipedia GROUP BY OwnerUserId 
+ORDER BY final_owner_score DESC LIMIT 10;
+
+
+create table nithin_vincent_tfidf_1 as 
+Select HT.OwnerUserId,Title 
+from wikipedia HT JOIN distOwnerIDs DO on  HT.OwnerUserId  = DO.OwnerUserId;
+
+
+create or replace view nithin_vincent_tfidf_2 as 
+select OwnerUserId, eachword from nithin_vincent_tfidf_1 
+LATERAL VIEW explode(tokenize(title, True)) t as eachword where not is_stopword(eachword);
+
+
+create or replace view nithin_vincent_tfidf_3 as 
+select OwnerUserId , eachword, freq 
+from (select OwnerUserId , tf(eachword) as word2freq from nithin_vincent_tfidf_2 group by OwnerUserId) 
+t LATERAL VIEW explode(word2freq) t2 as eachword, freq;
+
+
+create or replace view nithin_vincent_tfidf_4 as 
+select * from (select OwnerUserId , eachword, freq,rank()  
+over (partition by OwnerUserId order by freq desc) as rn from nithin_vincent_tfidf_3 as t) as t where t.rn<=10 ;
+
+select * from nithin_vincent_tfidf_4;
