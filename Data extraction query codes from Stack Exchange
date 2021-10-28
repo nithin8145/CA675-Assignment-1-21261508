@@ -1,14 +1,11 @@
-select top 50000 * from Posts where Posts.ViewCount > 150000 order by Posts.ViewCount desc
-39878 rows returned.
-
-select top 50000 * from Posts where Posts.ViewCount > 90000 and Posts.ViewCount < 150003 order by Posts.ViewCount desc
-39262 rows returned.
-
-select top 50000 * from Posts where Posts.ViewCount > 60000 and Posts.ViewCount < 90001 order by Posts.ViewCount desc
+select top 50000 * from Posts where Posts.ViewCount > 112233 order by Posts.ViewCount desc
 50000 rows returned.
 
-select top 50000 * from Posts where Posts.ViewCount > 30000 and Posts.ViewCount < 60533 order by Posts.ViewCount desc
+select top 50000 * from Posts where Posts.ViewCount > 70000 and Posts.ViewCount < 127754 order by Posts.ViewCount desc
 50000 rows returned.
 
-select top 50000 * from Posts where Posts.ViewCount > 41000 and Posts.ViewCount < 45698 order by Posts.ViewCount desc
-23210 rows returned.
+select top 50000 * from Posts where Posts.ViewCount > 40000 and Posts.ViewCount < 74785 order by Posts.ViewCount desc
+50000 rows returned.
+
+select top 50000 * from Posts where Posts.ViewCount > 25000 and Posts.ViewCount < 53347 order by Posts.ViewCount desc
+50000 rows returned.
