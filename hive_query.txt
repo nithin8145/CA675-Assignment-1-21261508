@@ -1,3 +1,5 @@
+hive;
+
 //Creating database 
 CREATE DATABASE nithins_assignment;
 
